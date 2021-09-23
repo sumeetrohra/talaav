@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "format": "prettier --check ./src"
+    "format": "prettier --check ./src",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.2",
