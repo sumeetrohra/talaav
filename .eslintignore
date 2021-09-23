@@ -1,0 +1,11 @@
+node_modules/
+storybook-dist/
+dist/
+app/.next/
+.next
+.netlify
+app/static/js/
+app/transformers/
+cypress/integration/examples
+cypress/plugins
+extra

@@ -1,0 +1,10 @@
+node_modules/
+storybook-dist/
+app/.next/
+.next
+package-lock.json
+dist/
+.netlify
+app/static/js/
+app/transformers/
+app/assets/styles/espn-icons.css
