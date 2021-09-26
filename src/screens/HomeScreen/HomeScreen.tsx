@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Title } from 'react-native-paper';
 
-const HomeScreen: React.FC = ({ navigation }) => {
+const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Title>Home</Title>
