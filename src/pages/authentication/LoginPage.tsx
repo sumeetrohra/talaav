@@ -1,6 +1,7 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Divider, TextInput, Title } from 'react-native-paper';
+import { Button, TextInput, Title } from 'react-native-paper';
 
 const theme = {
   textInput: {
@@ -14,7 +15,8 @@ const theme = {
   },
 };
 
-const SigninScreen: React.FC = ({ navigation }) => {
+const SigninScreen: React.FC = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
