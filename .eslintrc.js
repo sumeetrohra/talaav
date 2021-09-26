@@ -1,4 +1,4 @@
-export default {
+const config = {
   env: {
     browser: true,
     es2021: true,
@@ -22,3 +22,5 @@ export default {
     semi: ['error', 'always'],
   },
 };
+
+export default config;
