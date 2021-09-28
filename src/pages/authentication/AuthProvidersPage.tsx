@@ -1,12 +1,36 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView, Text, Button } from '../../Components/global';
 import { EMAIL_LOGIN_PAGE_ID, EMAIL_SIGNUP_PAGE_ID } from '../../constants/AuthConstants';
+import * as Google from 'expo-auth-session/providers/google';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import * as WebBrowser from 'expo-web-browser';
+import googleAuthConfig from '../../config/googleAuth';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const AuthProviders: React.FC = () => {
+  const [, response, promptAsyncGogleLogin] = Google.useIdTokenAuthRequest({
+    clientId: googleAuthConfig.clientId,
+    // TODO: Sumeet: add client Ids for standalone apps and web. Ref: https://docs.expo.dev/guides/authentication/#google
+    // TODO: Sumeet: Linking app with urls. Ref: https://docs.expo.dev/guides/linking/
+  });
+
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token } = response.params;
+      const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+      firebase
+        .auth()
+        .signInWithCredential(credential)
+        .catch(error => console.log(error));
+    }
+  }, [response]);
+
   const handleGoogleAuth = () => {
-    console.log('google auth');
+    promptAsyncGogleLogin();
   };
 
   const navigation = useNavigation<any>();
