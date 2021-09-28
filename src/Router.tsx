@@ -11,6 +11,7 @@ import { useTheme } from 'react-native-paper';
 import { AUTH_PROVIDERS_PAGE_ID, EMAIL_LOGIN_PAGE_ID, EMAIL_SIGNUP_PAGE_ID } from './constants/AuthConstants';
 import { HOME_PAGE_ID } from './constants/pageNames';
 import firebase from 'firebase/app';
+import { signOut } from './api/auth';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,8 @@ const Router: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
-    // firebase.auth().signOut();
+    // TODO: Gaurav: add a loading state here, so thet we don't render a login screen while it is being checked
+    // signOut();
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setLoggedIn(true);
