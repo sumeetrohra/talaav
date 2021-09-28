@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { DefaultTheme, DarkTheme, Provider as PaperProvider } from 'react-native-paper';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 interface IThemeContextProvider {
   children: ReactNode;
@@ -13,10 +13,10 @@ export const ThemeSwitcherContext = React.createContext<ThemeContextType>({ setT
 
 const ThemeContextProvider: React.FC<IThemeContextProvider> = ({ children }) => {
   const [theme, setTheme] = useState({
-    ...DarkTheme,
+    ...DefaultTheme,
     roundness: 4,
     colors: {
-      ...DarkTheme.colors,
+      ...DefaultTheme.colors,
     },
   });
 
