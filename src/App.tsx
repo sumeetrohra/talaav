@@ -1,24 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Router from './Router';
+import ThemeContextProvider from './ThemeContextProvider';
+import firebase from 'firebase/app';
+import { firebaseConfig } from './config/firebase';
 
 const App: React.FC = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  } else {
+    firebase.app(); // if already initialized, use that one
+  }
 
-    </View>
+  return (
+    <ThemeContextProvider>
+      <Router />
+    </ThemeContextProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;

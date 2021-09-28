@@ -1,7 +1,8 @@
-export default {
+module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
@@ -16,9 +17,9 @@ export default {
   rules: {
     'prettier/prettier': 'error',
     // 'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
-    indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
